@@ -1,7 +1,7 @@
 CC=gcc
 RM=rm -f
 final: login.o main.o menuGuest.o menuMember.o
-	$(CC) login.o main.o menuGuest menuMember -o final
+	$(CC) login.o main.o menuGuest.o menuMember.o -o final
 
 login.o: login.c login.h
 	$(CC) -c login.c

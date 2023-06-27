@@ -1,6 +1,7 @@
 {
     "files.associations": {
         "stdbool.h": "c",
-        "login.h": "c"
+        "login.h": "c",
+        "menuguest.h": "c"
     }
 }

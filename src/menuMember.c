@@ -2,10 +2,14 @@
 #include <stdlib.h>
 #include "menuMember.h"
 #include <stdbool.h>
+#include <string.h>
+#define MAX 100
 #define NUMITEMS 16 //Constant for num of items
+#define SINGLEINPUT 1
 
 void Members(){
-    printf("\n########################################################################");
+    printf("\n########################################################################\n");
+    printf("\nMembers get 20 percent discount");
 
     printf("\nGUEST MENU\nOur Menu includes...\n\n");
 
@@ -28,28 +32,48 @@ void memberSelection(){
     suggest what the user tried to enter*/
     
 
+    //Scanf() stops when it detects whitespace
+
     //Have an arry with all possible food
-    char *food[] = {"Pork Steak", "Beef Steak", "Chicke Steak", "Fish Steak", "Vegetable Salad", "Fruit Salad", "Macaroni Salad", "Chicken Salad", "Macaroni and Cheese", "Pasta Primavera", "Penne with Pesto", "Penne with Vodka Sauce", "Grilled Greak Chicken", "Grilled Scampi", "Cornell Grilled Chicken", "Pork Grill"};
+    char *food[] = {"Pork_Steak", "Beef_Steak", "Chicke_Steak", "Fish_Steak", "Vegetable_Salad", "Fruit_Salad", "Macaroni_Salad", "Chicken_Salad", "Macaroni_and_Cheese", "Pasta_Primavera", "Penne_with_Pesto", "Penne_with_Vodka_Sauce", "Grilled_Greak_Chicken", "Grilled_Scampi", "Cornell_Grilled_Chicken", "Pork_Grill"};
 
     //IK scanf should not be used, we fix that later
-    char *userInput = malloc(100*sizeof(char));
-    printf("Please Enter Your Orders: ");
-    bool isStillOrdering = false;
+    char userInput[MAX];
+    char waste[MAX];
+    bool isStillOrdering = true;
+    int num;
+    printf("Please Enter Your Orders (Note: 1 order at a time): ");
+    //scanf("%s",userInput);
+    fgets(waste,MAX,stdin); //Get rid of waste in buffer
+    fgets(userInput,MAX,stdin);
+    do{
 
-    scanf("%s",userInput);
-    while(!(isStillOrdering)){
-        printf("Are you still ordering? Y/N");
-        char *stillOrdering = (char*) malloc(sizeof(char));
-        scanf("%c",&(*stillOrdering));
+        printf("Are you still ordering? (Y/N): ");
+        //scanf("%s\n",quit);
+        //fgets(waste,MAX,stdin);
+        //fgets(quit,SINGLEINPUT,stdin);
+        char quit = getc(stdin);
+        fgets(userInput,MAX,stdin);
         //Check size
-        register int counter = 0;
+        //register int counter = 0;
         //Char is an int, so we can comapre like int
-        if(*stillOrdering == 'Y'){
-            continue;
+        
+        if((quit == 'Y')|| (quit == 'y')){
+            //fgets(waste,MAX,stdin);
+            printf("\nPlease Enter Your Orders (Note: 1 order at a time): \n");
+            //scanf("%s\n",userInput);
+            //fgets(waste,MAX,stdin);
+            fgets(userInput,MAX,stdin);
+        }
+        else if((quit == 'N') || (quit == 'y')){ 
+            isStillOrdering = false;
         }
         else{
-            break;
+            printf("Unknown Entry...");
+            exit(1);
         }
         
     }
+    while(isStillOrdering);
+    
 }

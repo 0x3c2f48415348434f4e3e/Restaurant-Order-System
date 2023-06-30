@@ -1,7 +1,8 @@
 CC=gcc
 RM=rm -f
-final: login.o main.o menuGuest.o menuMember.o
-	$(CC) login.o main.o menuGuest.o menuMember.o -o final
+OBJS=login.o main.o menuGuest.o menuMember.o
+final: $(OBJS)
+	$(CC) $(OBJS) -o final
 
 login.o: login.c login.h
 	$(CC) -c login.c

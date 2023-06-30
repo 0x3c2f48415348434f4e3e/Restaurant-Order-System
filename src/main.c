@@ -14,7 +14,8 @@ int main(int argc, char * argv[]){
     val = Login();
 
     if(val){
-        printf("Hello world");
+        Members();
+        memberSelection();
     }
     else{
         Guest();

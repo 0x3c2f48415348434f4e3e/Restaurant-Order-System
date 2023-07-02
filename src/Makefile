@@ -16,6 +16,11 @@ menuGuest.o: menuGuest.c menuMember.h
 menuMember.o: menuMember.c menuMember.h
 	$(CC) -c menuMember.c
 
+help:
+	@echo "Use one of the following commands as follows"
+	@echo "make		Create all necessary files"
+	@echo "clean 	Clean up files"
+
 clean:
 	$(RM) *.o && $(RM) final
 

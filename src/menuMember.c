@@ -7,6 +7,10 @@
 #define NUMITEMS 16 //Constant for num of items
 #define SINGLEINPUT 1
 
+#ifndef HOLD
+    #define HOLD 1024
+#endif
+
 void Members(){
     printf("\n########################################################################\n");
     printf("\nMembers get 20 percent discount");
@@ -26,12 +30,13 @@ void Members(){
 
 }
 
-void memberSelection(){
+char * memberSelection(){
     /*Create a simple algorithm that checks if
     an optin user eneters is not there and then tries to
     suggest what the user tried to enter*/
     
-
+    //create our array to hold structures of food
+    static create *ListOfFood[HOLD];  //(create*) malloc(1024*sizeof(create)); //dynamic memory alocation
     //Scanf() stops when it detects whitespace
 
     //Have an arry with all possible food
@@ -46,7 +51,24 @@ void memberSelection(){
     //scanf("%s",userInput);
     fgets(waste,MAX,stdin); //Get rid of waste in buffer
     fgets(userInput,MAX,stdin);
+    create *Head = NULL;
+    create *Tail = NULL;
+    create *temp = (create*) malloc(sizeof(create));
     do{
+        if(Head == NULL){
+            strcpy(temp->ListOfFood,userInput);
+            temp->NumofFood = 1;
+            temp->next = NULL;
+            Head = Tail = temp;
+        }
+        else{
+            strcpy(temp->ListOfFood,userInput);
+            temp->NumofFood = temp->NumofFood+1;
+            temp->next = NULL;
+            Tail->next = temp;
+            Tail = Tail->next;
+        }
+        ListOfFood[Tail->NumofFood-1] = Tail;
 
         printf("Are you still ordering? (Y/N): ");
         //scanf("%s\n",quit);
@@ -76,4 +98,6 @@ void memberSelection(){
     }
     while(isStillOrdering);
     
+
+    return *ListOfFood;
 }

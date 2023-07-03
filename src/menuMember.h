@@ -1,9 +1,10 @@
 #include <stdio.h>
-
+#include <stdlib.h>
 void Members();
-void memberSelection();
+char * memberSelection();
 
-struct menuMemberTotalOrder{
+typedef struct menuMemberTotalOrder{
     int NumofFood;
-    char *ListOfFood[] = (char *) malloc(1024*sizeof(char));
-};
+    char *ListOfFood;
+    struct menuMemberTotalOrder *next; //Holds info of previous information
+} create;

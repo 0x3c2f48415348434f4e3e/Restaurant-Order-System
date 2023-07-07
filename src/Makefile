@@ -2,7 +2,7 @@ CC=gcc
 RM=rm -f
 OBJS=login.o main.o menuGuest.o menuMember.o
 final: $(OBJS)
-	$(CC) $(OBJS) -o final
+	$(CC) $(OBJS) -o final -Wall -Wextra -pedantic
 
 login.o: login.c login.h
 	$(CC) -c login.c

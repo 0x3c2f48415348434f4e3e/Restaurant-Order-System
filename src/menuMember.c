@@ -8,7 +8,7 @@
 #define SINGLEINPUT 1
 
 #ifndef HOLD
-    #define HOLD 1024
+    #define HOLD 2
 #endif
 
 void Members(){
@@ -30,15 +30,16 @@ void Members(){
 
 }
 
-char * memberSelection(){
+create * memberSelection(){
     /*Create a simple algorithm that checks if
     an optin user eneters is not there and then tries to
     suggest what the user tried to enter*/
     
     //create our array to hold structures of food
-    static create *ListOfFood[HOLD];  //(create*) malloc(1024*sizeof(create)); //dynamic memory alocation
+    static create *ListOfFood[HOLD]; //(create*) malloc(1024*sizeof(create)); //dynamic memory alocation
     //Scanf() stops when it detects whitespace
 
+    int top = -1; //empty list
     //Have an arry with all possible food
     char *food[] = {"Pork_Steak", "Beef_Steak", "Chicke_Steak", "Fish_Steak", "Vegetable_Salad", "Fruit_Salad", "Macaroni_Salad", "Chicken_Salad", "Macaroni_and_Cheese", "Pasta_Primavera", "Penne_with_Pesto", "Penne_with_Vodka_Sauce", "Grilled_Greak_Chicken", "Grilled_Scampi", "Cornell_Grilled_Chicken", "Pork_Grill"};
 
@@ -51,24 +52,15 @@ char * memberSelection(){
     //scanf("%s",userInput);
     fgets(waste,MAX,stdin); //Get rid of waste in buffer
     fgets(userInput,MAX,stdin);
-    create *Head = NULL;
-    create *Tail = NULL;
-    create *temp = (create*) malloc(sizeof(create));
+
     do{
-        if(Head == NULL){
-            strcpy(temp->ListOfFood,userInput);
-            temp->NumofFood = 1;
-            temp->next = NULL;
-            Head = Tail = temp;
-        }
-        else{
-            strcpy(temp->ListOfFood,userInput);
-            temp->NumofFood = temp->NumofFood+1;
-            temp->next = NULL;
-            Tail->next = temp;
-            Tail = Tail->next;
-        }
-        ListOfFood[Tail->NumofFood-1] = Tail;
+        //check that temp is initalized
+        top+=1;
+        //create space in memory
+        create * store = (create*) malloc(sizeof(create));
+        strcpy(store->ListOfFood,userInput);
+        store->Num = top;
+        //ListOfFood[top] = (store);
 
         printf("Are you still ordering? (Y/N): ");
         //scanf("%s\n",quit);
@@ -99,5 +91,5 @@ char * memberSelection(){
     while(isStillOrdering);
     
 
-    return *ListOfFood;
+    return ListOfFood[0];
 }

@@ -36,8 +36,7 @@ create * memberSelection(){
     suggest what the user tried to enter*/
     
     //create our array to hold structures of food
-    static create *ListOfFood[HOLD]; //(create*) malloc(1024*sizeof(create)); //dynamic memory alocation
-    //Scanf() stops when it detects whitespace
+    static create *ListOfFood[HOLD];
 
     int top = -1; //empty list
     //Have an arry with all possible food
@@ -49,7 +48,6 @@ create * memberSelection(){
     bool isStillOrdering = true;
     int num;
     printf("Please Enter Your Orders (Note: 1 order at a time): ");
-    //scanf("%s",userInput);
     fgets(waste,MAX,stdin); //Get rid of waste in buffer
     fgets(userInput,MAX,stdin);
 
@@ -63,20 +61,16 @@ create * memberSelection(){
         ListOfFood[top] = (store);
 
         printf("Are you still ordering? (Y/N): ");
-        //scanf("%s\n",quit);
-        //fgets(waste,MAX,stdin);
-        //fgets(quit,SINGLEINPUT,stdin);
+
         char quit = getc(stdin);
         fgets(userInput,MAX,stdin);
         //Check size
-        //register int counter = 0;
         //Char is an int, so we can comapre like int
         
         if((quit == 'Y')|| (quit == 'y')){
             //fgets(waste,MAX,stdin);
             printf("\nPlease Enter Your Orders (Note: 1 order at a time): \n");
-            //scanf("%s\n",userInput);
-            //fgets(waste,MAX,stdin);
+
             fgets(userInput,MAX,stdin);
         }
         else if((quit == 'N') || (quit == 'y')){ 

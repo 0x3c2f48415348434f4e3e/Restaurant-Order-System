@@ -6,7 +6,7 @@ CWD=`pwd`
 #Also we want to check if the direcotry is empty first
 cd ../bin
 isEmpty="total 0" #When we use the ls -lrt command it returns that if direcotry is empty
-#use PIPE
+
 res=`ls -lrt`
 
 if [[ $res = $isEmpty ]]
@@ -16,7 +16,7 @@ else
     FILE=`ls *.o`
     for value in $FILE
     do
-    #echo $value
+
     rm $value
     echo "$value deleted from `pwd`"
     done
@@ -42,7 +42,6 @@ FILE=`ls *.o`
 
 for value in $FILE
 do
-#echo $value
 mv $FILE ../bin
 echo "Moved object files to bin directory"
 done

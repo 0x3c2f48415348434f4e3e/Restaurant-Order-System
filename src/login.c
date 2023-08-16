@@ -36,5 +36,5 @@ int Login(void){
 
     }
 
-    //printf("Logged in");
+//Next we are going to read username and password avaibale in the sen/password.txt file and compare it with user info to create a simple authentication
 }

@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include "menuGuest.h"
 
 void Guest(){
     printf("\n########################################################################");
@@ -18,7 +19,7 @@ void Guest(){
 
 }
 
-void guestSelection(){
+createGuest * guestSelection(){
     /*Create a simple algorithm that checks if
     an optin user eneters is not there and then tries to
     suggest what the user tried to enter*/

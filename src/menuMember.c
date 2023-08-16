@@ -60,7 +60,7 @@ create * memberSelection(){
         create * store = (create*) malloc(sizeof(create));
         strcpy(store->ListOfFood,userInput);
         store->Num = top;
-        //ListOfFood[top] = (store);
+        ListOfFood[top] = (store);
 
         printf("Are you still ordering? (Y/N): ");
         //scanf("%s\n",quit);
@@ -80,6 +80,9 @@ create * memberSelection(){
             fgets(userInput,MAX,stdin);
         }
         else if((quit == 'N') || (quit == 'y')){ 
+            for(int i=0; i<=top; ++i){
+                printf("Your orders are: %s",ListOfFood[i]->ListOfFood);
+            }
             isStillOrdering = false;
         }
         else{

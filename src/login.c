@@ -8,6 +8,9 @@
 int Login(void){
     //Allow user to enter user name and password
     //Stay away from scanf as it is very vunerable to buffer overflow
+
+    //Could actually use a libray to convert passwird to a hashed format and use that for comparison
+
     printf("1.) Guest\n2.) Member\n");
     int userInput;
     scanf("%i",&userInput);

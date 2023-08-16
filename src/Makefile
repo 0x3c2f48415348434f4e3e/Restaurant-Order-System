@@ -1,8 +1,9 @@
-CC=gcc
-RM=rm -f
-OBJS=login.o main.o menuGuest.o menuMember.o
-final: $(OBJS)
-	$(CC) $(OBJS) -o final -Wall -Wextra -pedantic
+CC:=gcc
+RM:=rm -f
+all:=login.o main.o menuGuest.o menuMember.o
+CFLAGS:= -Wall -Wextra -pedantic
+final: $(all)
+	$(CC) ${CFLAGS} $(all) -o ${@}
 
 login.o: login.c login.h
 	$(CC) -c login.c
@@ -22,6 +23,6 @@ help:
 	@echo "clean 	Clean up files"
 
 clean:
-	$(RM) *.o && $(RM) final
+	$(RM) *.o final
 
 	
